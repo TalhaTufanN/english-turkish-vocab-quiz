@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TestMaker | Modern Vocabulary Quiz Generator</title>
+    <!-- Modern web font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="background-mesh">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+
+    <main class="container">
+      <header class="header">
+        <h1>TestMaker</h1>
+        <p>
+          Transform your English word list into Turkish translated vocabulary
+          lists and 50-question quizzes instantly.
+        </p>
+      </header>
+
+      <section class="card glassmorphism">
+        <div id="upload-zone" class="upload-zone">
+          <input type="file" id="file-input" accept=".txt" hidden />
+          <div class="upload-content">
+            <svg
+              class="upload-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 10V9C7 6.23858 9.23858 4 12 4C14.7614 4 17 6.23858 17 9V10C19.2091 10 21 11.7909 21 14C21 15.4806 20.1956 16.8084 19 17.5M7 10C4.79086 10 3 11.7909 3 14C3 15.4806 3.8044 16.8084 5 17.5M7 10C7.43285 10 7.84965 10.0688 8.24006 10.1959M12 12V21M12 12L15 15M12 12L9 15"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h2>Upload your .txt file</h2>
+            <p>Drag & drop your text file here, or click to browse.</p>
+            <span class="btn-primary" id="browse-btn">Browse Files</span>
+          </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="state hidden">
+          <div class="spinner"></div>
+          <h3>Processing your vocabulary...</h3>
+          <p>
+            This may take a moment while we translate your words via DeepL...
+          </p>
+          <!-- Simple progress indicator -->
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+          </div>
+        </div>
+
+        <!-- Success State -->
+        <div id="success-state" class="state hidden">
+          <div class="success-icon-container">
+            <svg
+              class="success-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M20 6L9 17L4 12"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <h3>Generation Complete!</h3>
+          <p>Your vocabulary list and generated quiz are ready for download.</p>
+          <div class="download-actions">
+            <a id="download-words" class="btn-primary" href="#" target="_blank"
+              >Download Word List</a
+            >
+            <a id="download-quiz" class="btn-secondary" href="#" target="_blank"
+              >Download Quiz PDF</a
+            >
+          </div>
+          <button id="reset-btn" class="btn-ghost">Create Another</button>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="state hidden">
+          <div class="error-icon-container">
+            <svg
+              class="error-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12 9V14M12 17.5V18M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <h3>Something went wrong</h3>
+          <p id="error-message">We couldn't process your file.</p>
+          <button id="retry-btn" class="btn-primary">Try Again</button>
+        </div>
+      </section>
+    </main>
+    <script src="/static/script.js"></script>
+  </body>
+</html>

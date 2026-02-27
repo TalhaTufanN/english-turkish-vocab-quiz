@@ -1,0 +1,364 @@
+:root {
+  --bg-dark: #0f111a;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --accent-primary: #8b5cf6;
+  --accent-secondary: #ec4899;
+  --accent-hover: #7c3aed;
+  --success: #10b981;
+  --error: #ef4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Mesh */
+.background-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--bg-dark);
+}
+
+.blob {
+  position: absolute;
+  filter: blur(100px);
+  opacity: 0.5;
+  animation: float 20s infinite alternate;
+}
+
+.blob-1 {
+  top: -10%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.4) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.blob-2 {
+  bottom: -10%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(
+    circle,
+    rgba(236, 72, 153, 0.3) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  top: 40%;
+  left: 40%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(
+    circle,
+    rgba(59, 130, 246, 0.3) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(10%, 10%) scale(1.1);
+  }
+}
+
+/* Container & Header */
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(
+    to right,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+}
+
+.header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Glassmorphism Card */
+.glassmorphism {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* Upload Zone */
+.upload-zone {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-zone:hover,
+.upload-zone.dragover {
+  border-color: var(--accent-primary);
+  background: rgba(139, 92, 246, 0.05);
+  transform: translateY(-2px);
+}
+
+.upload-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--accent-primary);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.upload-zone:hover .upload-icon {
+  transform: translateY(-5px);
+}
+
+.upload-zone h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.upload-zone p {
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-hover)
+  );
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.39);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.23);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  margin-top: 1rem;
+}
+
+.btn-ghost:hover {
+  color: white;
+}
+
+/* States */
+.state {
+  text-align: center;
+  padding: 2rem 0;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading State */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--accent-primary);
+  animation: spin 1s ease-in-out infinite;
+  margin: 0 auto 2rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.state h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.state p {
+  color: var(--text-secondary);
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  margin-top: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(
+    90deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  border-radius: 6px;
+  animation: progress 2s infinite ease-in-out alternate;
+}
+
+@keyframes progress {
+  0% {
+    width: 10%;
+    transform: translateX(0);
+  }
+  100% {
+    width: 40%;
+    transform: translateX(60vw);
+  }
+}
+
+/* Success & Error Icons */
+.success-icon-container,
+.error-icon-container {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.5rem;
+}
+
+.success-icon-container {
+  background: rgba(16, 185, 129, 0.2);
+  color: var(--success);
+}
+
+.error-icon-container {
+  background: rgba(239, 68, 68, 0.2);
+  color: var(--error);
+}
+
+.success-icon,
+.error-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.download-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 640px) {
+  .download-actions {
+    flex-direction: column;
+  }
+  .header h1 {
+    font-size: 2.5rem;
+  }
+}
