@@ -55,7 +55,28 @@ DEEPL_API_KEY="your_actual_deepl_api_key_here"
 
 ## Running the Application 🏃‍♂️
 
-Start the local FastAPI development server using Uvicorn:
+### The Easy Way (RECOMMENDED) ✨
+
+You can use the provided startup scripts to automatically create a virtual environment, install all dependencies, open your browser, and start the server!
+
+**On Windows:**
+Double-click `start.bat` or run:
+
+```bash
+start.bat
+```
+
+**On macOS / Linux:**
+Run the shell script:
+
+```bash
+chmod +x start.sh
+./start.sh
+```
+
+### The Manual Way
+
+If you prefer to start the local FastAPI development server manually, ensure your `.env` is set up and run:
 
 ```bash
 python -m uvicorn app:app --reload
